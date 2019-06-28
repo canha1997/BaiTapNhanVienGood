@@ -9,10 +9,14 @@ import model.Task;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Controller {
     ///////NHAN VIEN////////////////////////
     Scanner scanner=new Scanner(System.in);
+    Date nowtime=new Date();
+    String deadlineInput;
 
 
     public void nhapNhanVien(ArrayList<NhanVien> nhanVienList) {
@@ -77,8 +81,7 @@ public class Controller {
 
     ///////DU AN///////////////////
 
-    Date nowtime=new Date();
-    String deadlineInput;
+
 
 
     public void nhapDuAn(ArrayList<DuAn> duAnList) {
@@ -111,7 +114,7 @@ public class Controller {
         System.out.println("Deadline cua du an theo yyyy/mm/dd:");
         duan.setDateLine(scanner.nextLine());
         deadlineInput=duan.getDateLine();
-        // DateAndTime.stringToDate(deadlineInput);
+        DateAndTime.stringToDate(deadlineInput);
         DateAndTime.trim(nowtime);
         duAnList.add(duan);
     }
@@ -185,7 +188,8 @@ public class Controller {
     }
 ////////// TASK////////////////////
 
-    public void nhapTask(ArrayList <NhanVien> nhanvienList) {
+    public void nhapTask(ArrayList <NhanVien> nhanvienList, ArrayList<Task> taskList,  ArrayList<Task> kiemTraTaskCuaNhanVien) {
+
 
         Task task= new Task();
         int k=0;
@@ -201,7 +205,7 @@ public class Controller {
             {
                 if (idTest.equals(nhanv.getID())) {
                     k=1;
-                    task.setIDtask(idTest);
+                    task.setTaskNhanVien(idTest);
                     break;
                 }
             }
@@ -213,16 +217,67 @@ public class Controller {
                 System.out.println("Ma Id cua nhan vien khong ton tai");
                 continue;
         }
-        System.out.println("Nhap tinh trang task");
-        task.setTinhTrangTask(scanner.nextLine());
-        System.out.println("Xin moi ban nhap deadline");
-        task.setTaskDeadline(scanner.nextLine());
+
+        while (true)
+         {
+             Pattern p = Pattern.compile("(hold|finish|processing)");
+             System.out.println("Nhap tinh trang task");
+             String testTinhTrang=scanner.nextLine().trim();
+             Matcher matcher=p.matcher(testTinhTrang);
+             if(matcher.matches())
+             {
+                 task.setTinhTrangTask(testTinhTrang);
+                 System.out.println("Set tinh trang du an thanh cong");
+                 break;
+             }
+             else System.out.println("Chi nhap hold/finish/processing");
+
+        }
+        System.out.println("Xin moi ban nhap deadline:");
+        String deadLine=scanner.nextLine();
+        task.setTaskDeadline(DateAndTime.stringToDate(deadLine));
+
+        if(kiemTraDeadLine(task.getTaskDeadline()))
+        {
+            kiemTraTaskCuaNhanVien.add(task);
+        }
+
+        taskList.add(task);
     }
 
 
-    public void hienThiTask() {
+    public void hienThiTask(ArrayList<Task> taskList) {
+        for(Task taskll: taskList) {
+            System.out.println("Id cua Task la :"+taskll.getIDtask());
+            System.out.println("Ten cua Task la:"+taskll.getTaskTitle());
+            System.out.println("Id cua nhan vien thuc hien du an:"+taskll.getTaskNhanVien());
+            System.out.println("Tinh trang cua du an:"+taskll.getTinhTrangTask());
+            System.out.println("Deadline cua du an:"+taskll.getTaskDeadline());
+            System.out.println("#################################################");
+        }
 
     }
+    public boolean kiemTraDeadLine(Date datetime)
+    {
+          if(datetime.before(nowtime))
+          {
+              return true;
+          }
+          else return false;
+    }
+    public void kiemTraTaskCuaNhanVien(ArrayList<Task> kiemTraTaskCuaNhanVien)
+    {
+
+        System.out.println("Danh sach nhung task da qua han");
+        for(Task taskCheck: kiemTraTaskCuaNhanVien)
+        {
+            System.out.println(taskCheck.getTaskTitle());
+            System.out.println(taskCheck.getIDtask());
+            System.out.println(taskCheck.getTaskNhanVien());
+            System.out.println(taskCheck.getTaskDeadline());
+        }
+    }
+
 
 
 }

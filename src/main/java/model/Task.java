@@ -1,11 +1,14 @@
 package model;
+
+import java.util.Date;
+
 public class Task {
     private String IDtask;
     private String taskTitle;
     private String tinhTrangTask;
     private String taskNhanVien;
     private String taskDuAn;
-    private String taskDeadline;
+    private Date taskDeadline;
 
     public String getIDtask() {
         return IDtask;
@@ -47,11 +50,11 @@ public class Task {
         this.taskDuAn = taskDuAn;
     }
 
-    public String getTaskDeadline() {
+    public Date getTaskDeadline() {
         return taskDeadline;
     }
 
-    public void setTaskDeadline(String taskDeadline) {
+    public void setTaskDeadline(Date taskDeadline) {
         this.taskDeadline = taskDeadline;
     }
 }
