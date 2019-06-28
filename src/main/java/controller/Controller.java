@@ -194,9 +194,9 @@ public class Controller {
         task.setTaskTitle(scanner.nextLine().trim());
         System.out.println("Nhap ID task:");
         task.setIDtask(scanner.nextLine().trim());
+        while (true) {
         System.out.println("Nhap id Nhan vien dang thuc hien task:");
         String idTest=scanner.nextLine();
-        while (true) {
             for (NhanVien nhanv : nhanvienList)
             {
                 if (idTest.equals(nhanv.getID())) {
@@ -211,8 +211,7 @@ public class Controller {
             }
             else
                 System.out.println("Ma Id cua nhan vien khong ton tai");
-
-
+                continue;
         }
         System.out.println("Nhap tinh trang task");
         task.setTinhTrangTask(scanner.nextLine());
