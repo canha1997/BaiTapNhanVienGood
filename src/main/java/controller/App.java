@@ -54,7 +54,8 @@ public class App {
             System.out.println("##########Dang QUAN LY NHAN VIEN##########  ");
             System.out.println("Chon (1) de co the nhap vo thong tin cua mot nhan vien:");
             System.out.println("Chon (2) de co the xuat ra toan bo nhan vien trong list");
-            System.out.println("Chon (3) de thoat");
+            System.out.println("Chon (3) de co the xoa nhan vien");
+            System.out.println("Chon (4) de thoat");
             int s=sc.nextInt();
             switch (s) {
                 case 1:
@@ -63,7 +64,10 @@ public class App {
                 case 2:
                     quanlyNhanVien.hienthiNhanVienList(nhanVienList);
                     break;
-                case 3:flag=1;
+                case 3: quanlyNhanVien.xoaNhanVien(nhanVienList);
+                break;
+                case 4:
+                    flag=1;
                     break;
                 default:break;
             }

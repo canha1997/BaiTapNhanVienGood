@@ -25,7 +25,7 @@ public class NhanVienQuanLy implements iNhanVien{
     }
 
     @Override
-    public void xoaNhanVien() {
-        controller.xoaNhanVien();
+    public void xoaNhanVien(ArrayList<NhanVien> nhanVienList) {
+        controller.xoaNhanVien(nhanVienList);
     }
 }

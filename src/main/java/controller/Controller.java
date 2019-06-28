@@ -75,8 +75,41 @@ public class Controller {
     }
 
 
-    public void xoaNhanVien() {
-
+    public void xoaNhanVien(ArrayList<NhanVien> nhanVienList) {
+        while (true) {
+            int k=0;
+            System.out.println("Nhan(1) neu ban muon xoa nhan vien chi dinh trong list:");
+            System.out.println("Nhan (2) neu ban muon xoa toan bo List");
+            System.out.println("Nhap (3) Thoat");
+            System.out.print("Ban chon la:");
+            int z = scanner.nextInt();
+            switch (z) {
+                case 1:
+                    System.out.println("Nhap ID Nhan vien ban muon xoa");
+                    String test = scanner.nextLine().trim();
+                    scanner.nextLine();
+                    int x;
+                    for (NhanVien nhanVien : nhanVienList) {
+                        if (nhanVien.getID().equals(test)) {
+                            x = nhanVienList.indexOf(nhanVien.getID());
+                            System.out.println(x);
+                            nhanVienList.remove(x);
+                            System.out.println("Remove nhan vien voi ID thanh cong");
+                            break;
+                        } else
+                            System.out.println("Id nhan vien khong ton tai");
+                    }
+                    break;
+                case 2:
+                      nhanVienList.removeAll(nhanVienList);
+                      if(nhanVienList.size()==0) System.out.println("Remove tat ca thanh cong");
+                   break;
+                   default:
+                       k=1;
+                       break;
+            }
+            if(k==1) break;
+        }
     }
 
     ///////DU AN///////////////////
@@ -233,6 +266,7 @@ public class Controller {
              else System.out.println("Chi nhap hold/finish/processing");
 
         }
+
         System.out.println("Xin moi ban nhap deadline:");
         String deadLine=scanner.nextLine();
         task.setTaskDeadline(DateAndTime.stringToDate(deadLine));
