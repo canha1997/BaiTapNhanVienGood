@@ -114,7 +114,9 @@ public class App {
             System.out.println("#### QUAN LY STARK########");
             System.out.println("Chon (1) de co the nhap vo mot Task");
             System.out.println("Chon (2) de co the xuat ra toan bo task trong list");
-            System.out.println("Chon (4) de Thoat");
+            System.out.println("Chon (3) de xuat ra nhung task da tre deadline");
+            System.out.println("Chon (4) de co the kiem tra task cua nhan vien");
+            System.out.println("Chon (5) de Thoat");
             int k = sc.nextInt();
             int flag=0;
             switch (k) {
@@ -125,8 +127,12 @@ public class App {
                      task.hienThiTask(taskList);
                     break;
                 case 3:
-                    task.kiemTraTaskCuaNhanVien(kiemTraTaskCuaNhanVien);
+                    task.kiemTraDeadlineCuaNhanVien(kiemTraTaskCuaNhanVien);
+                    break;
                 case 4:
+                    task.kiemTraTaskCuaNhanVien( taskList);
+                    break;
+                case 5:
                     flag=1;
                     break;
                 default:break;

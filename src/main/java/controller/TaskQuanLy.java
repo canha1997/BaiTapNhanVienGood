@@ -20,7 +20,12 @@ public class TaskQuanLy implements iTask {
     }
 
     @Override
-    public void kiemTraTaskCuaNhanVien( ArrayList<Task> taskDeadLineList) {
-       controller.kiemTraTaskCuaNhanVien( taskDeadLineList);
+    public void kiemTraDeadlineCuaNhanVien(ArrayList<Task> taskDeadLineList) {
+       controller.kiemTraDeadlineCuaNhanVien( taskDeadLineList);
+    }
+
+    @Override
+    public void kiemTraTaskCuaNhanVien(ArrayList<Task> taskList) {
+        controller.kiemTraTaskCuaMotNhanVien(taskList);
     }
 }

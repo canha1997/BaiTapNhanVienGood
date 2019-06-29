@@ -303,7 +303,7 @@ public class Controller {
           }
           else return false;
     }
-    public void kiemTraTaskCuaNhanVien(ArrayList<Task> kiemTraTaskCuaNhanVien)
+    public void kiemTraDeadlineCuaNhanVien(ArrayList<Task> kiemTraTaskCuaNhanVien)
     {
 
         System.out.println("Danh sach nhung task da qua han");
@@ -315,7 +315,42 @@ public class Controller {
             System.out.println(taskCheck.getTaskDeadline());
         }
     }
+   public void kiemTraTaskCuaMotNhanVien( ArrayList <Task> taskList)
+   {
+       while (true) {
+           int k=0;
+           int flags=0;
+           String tinhTrang="processing";
+           System.out.println("Nhap id Nhan vien dang thuc hien task:");
+           String idTest=scanner.nextLine();
+           for (Task task11 : taskList)
+           {
+               if (idTest.equals(task11.getTaskNhanVien())) {
+                   k=1;
+                   if(tinhTrang.equals(task11.getTinhTrangTask()))
+                   {
+                       flags++;
 
+                   }
+
+               }
+           }
+           if(flags > 3)
+           {
+               System.out.println("CO QUA NHIEU TASK, BAN CAN LAM NHANH DE DAY NHANH TIEN DO");
+           }
+           else {
+               System.out.println("TASK CUA NHAN VIEN NAY VAN ON DINH");
+           }
+           if(k==1)
+           {
+               break;
+           }
+           else
+               System.out.println("Ma Id cua nhan vien khong ton tai");
+               continue;
+       }
+   }
 
 
 }
