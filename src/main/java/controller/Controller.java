@@ -37,7 +37,7 @@ public class Controller {
             }
             if(nhanVienIDFlags)
             {
-                System.out.println("MA ID ko hop le vi da bi trung");
+                System.out.println("MA ID ko hop le vi da bi trung");   /////Check xem rang Id bi nhap co bi trung hay ko
                 continue;
             }
             else
@@ -129,7 +129,7 @@ public class Controller {
             String MaID=scanner.nextLine();
             for(DuAn duAnll: duAnList)
             {
-                if(duAnll.getID().equals(MaID))
+                if(duAnll.getID().equals(MaID))     /////Check xem cop bi trung ID du an hay ko
                 {
                     idFlags=true;
                     break;
@@ -296,6 +296,8 @@ public class Controller {
         }
 
     }
+    ////Ham kiiem tra Deadline thong qua time user nhap
+    ////// Neu ngay user nhap be hon ngay hien tai thi tra ve True
     public boolean kiemTraDeadLine(Date datetime)
     {
           if(datetime.before(nowtime))
