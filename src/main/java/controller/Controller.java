@@ -170,11 +170,13 @@ public class Controller {
 
     public void chinhSuaDuAn(ArrayList<DuAn> duAnList) {
         while (true) {
+            int k=0;
             System.out.println("Moi ban nhap ID cua du an ma muon chinh sua ?");
-            String indexID=scanner.nextLine().trim();
-            scanner.nextLine();
+            String indexID=scanner.nextLine();
+         //   scanner.nextLine();
             for (DuAn duAnll : duAnList) {
                 if (indexID.equals(duAnll.getID())) {
+                    k=1;
                     while (true)
                     {
                         System.out.println("Ban muon chinh sua thong tin gi cua du an?:");
@@ -184,13 +186,14 @@ public class Controller {
                         System.out.println("Chon (4) THOAT");
                         System.out.print("Ban chon la: ");
                         int o=scanner.nextInt();
+                        scanner.nextLine();
                         int flagOut=0;
                         switch (o)
                         {
                             case 1:
                                 System.out.println("Moi ban nhap ten Du An: ");
+                                duAnll.setTenDuAn(scanner.nextLine());
                                 scanner.nextLine();
-                                duAnll.setTenDuAn(scanner.nextLine().trim());
                                 break;
                             case 2:
                                 System.out.println("Moi ban nhap ID du an");
@@ -199,18 +202,19 @@ public class Controller {
                             case 3:
                                 System.out.println("Deadline cua du an theo yyyy/mm/dd:");
                                 duAnll.setDateLine(scanner.nextLine().trim());
+                                break;
                             case 4:
                                 flagOut=1;
                                 break;
                             default:break;
                         }
                         if(flagOut==1) break;
-                    }
-                } else {
-                    System.out.println("Error######, khong co du an nay");
-                    break;
+                        }
                 }
-
+            }
+            if(k==0) {
+                System.out.println("Error######, khong co du an nay");
+                continue;
             }
             System.out.println("Thoat chuong trinh chinh sua?(y/n):");
             char contin=scanner.next().charAt(0);
@@ -219,7 +223,6 @@ public class Controller {
                 continue;
             }
             else break;
-
         }
 
     }

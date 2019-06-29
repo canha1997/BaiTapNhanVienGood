@@ -87,6 +87,7 @@ public class App {
             System.out.println("Chon (4) de Thoat");
             System.out.print("Ban chon la ?: ");
             k = sc.nextInt();
+            sc.nextLine();
             int flag=0;
             switch (k) {
                 case 1:
