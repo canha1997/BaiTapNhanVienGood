@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Controller {
-    ///////NHAN VIEN////////////////////////
+    /////// Controller NHAN VIEN////////////////////////
     Scanner scanner=new Scanner(System.in);
     Date nowtime=new Date();
     String deadlineInput;
@@ -77,8 +77,8 @@ public class Controller {
 
     public void xoaNhanVien(ArrayList<NhanVien> nhanVienList) {
         while (true) {
-            int k=0;
-            int flags=0;
+            int k=0;///// flags de thoat vong lap
+            int flags=0;///// flags de nhan biet rang da xoa nhan vien
             String test;
             int inDexOf;
             System.out.println("Nhan(1) neu ban muon xoa nhan vien chi dinh trong list:");
@@ -116,8 +116,7 @@ public class Controller {
         }
     }
 
-    ///////DU AN///////////////////
-
+    /////// Controller DU AN///////////////////
 
 
 
@@ -173,7 +172,6 @@ public class Controller {
             int k=0;
             System.out.println("Moi ban nhap ID cua du an ma muon chinh sua ?");
             String indexID=scanner.nextLine();
-         //   scanner.nextLine();
             for (DuAn duAnll : duAnList) {
                 if (indexID.equals(duAnll.getID())) {
                     k=1;
@@ -187,7 +185,7 @@ public class Controller {
                         System.out.print("Ban chon la: ");
                         int o=scanner.nextInt();
                         scanner.nextLine();
-                        int flagOut=0;
+                        int flagOut=0;///// flags de thoat vong lap
                         switch (o)
                         {
                             case 1:
@@ -226,13 +224,13 @@ public class Controller {
         }
 
     }
-////////// TASK////////////////////
+////////// Controller TASK////////////////////
 
     public void nhapTask(ArrayList <NhanVien> nhanvienList, ArrayList<Task> taskList,  ArrayList<Task> kiemTraTaskCuaNhanVien) {
 
 
         Task task= new Task();
-        int k=0;
+        int k=0;///// flags de thoat vong lap
         Scanner scanner=new Scanner(System.in);
         System.out.println("Nhap ten task: ");
         task.setTaskTitle(scanner.nextLine().trim());
@@ -322,7 +320,7 @@ public class Controller {
    {
        while (true) {
            int k=0;
-           int flags=0;
+           int flags=0;///// flags de check xem processing co >3 hay ko
            String tinhTrang="processing";
            System.out.println("Nhap id Nhan vien dang thuc hien task:");
            String idTest=scanner.nextLine();
