@@ -78,27 +78,31 @@ public class Controller {
     public void xoaNhanVien(ArrayList<NhanVien> nhanVienList) {
         while (true) {
             int k=0;
+            int flags=0;
+            String test;
+            int inDexOf;
             System.out.println("Nhan(1) neu ban muon xoa nhan vien chi dinh trong list:");
             System.out.println("Nhan (2) neu ban muon xoa toan bo List");
             System.out.println("Nhap (3) Thoat");
             System.out.print("Ban chon la:");
             int z = scanner.nextInt();
+            scanner.nextLine();
             switch (z) {
                 case 1:
                     System.out.println("Nhap ID Nhan vien ban muon xoa");
-                    String test = scanner.nextLine().trim();
-                    scanner.nextLine();
-                    int x;
+                    test = scanner.nextLine();
                     for (NhanVien nhanVien : nhanVienList) {
-                        if (nhanVien.getID().equals(test)) {
-                            x = nhanVienList.indexOf(nhanVien.getID());
-                            System.out.println(x);
-                            nhanVienList.remove(x);
-                            System.out.println("Remove nhan vien voi ID thanh cong");
+                        if (test.equals(nhanVien.getID())) {
+                           inDexOf=nhanVienList.indexOf(nhanVien);
+                            nhanVienList.remove(inDexOf);
+                            flags=1;
                             break;
-                        } else
-                            System.out.println("Id nhan vien khong ton tai");
+                        }
                     }
+                    if(flags==1) {
+                        System.out.println("Remove nhan vien voi ID thanh cong");
+                    }else
+                    System.out.println("Id nhan vien khong ton tai");
                     break;
                 case 2:
                       nhanVienList.removeAll(nhanVienList);
