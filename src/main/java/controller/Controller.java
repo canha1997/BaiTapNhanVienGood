@@ -17,8 +17,8 @@ public class Controller {
     Scanner scanner=new Scanner(System.in);
     Date nowtime=new Date();
     String deadlineInput;
+///// ahihihddsfsdf
 
-/////Test Svn fsdfd dfdfd
     public void nhapNhanVien(ArrayList<NhanVien> nhanVienList) {
         NhanVien nhanvien=new NhanVien();
         Task task= new Task();
@@ -37,7 +37,7 @@ public class Controller {
             }
             if(nhanVienIDFlags)
             {
-                System.out.println("MA ID ko hop le vi da bi trung");   /////Check xem rang Id bi nhap co bi trung hay ko
+                System.out.println("MA ID ko hop le vi da bi trung");
                 continue;
             }
             else
@@ -129,7 +129,7 @@ public class Controller {
             String MaID=scanner.nextLine();
             for(DuAn duAnll: duAnList)
             {
-                if(duAnll.getID().equals(MaID))     /////Check xem cop bi trung ID du an hay ko
+                if(duAnll.getID().equals(MaID))
                 {
                     idFlags=true;
                     break;
@@ -296,8 +296,6 @@ public class Controller {
         }
 
     }
-    ////Ham kiiem tra Deadline thong qua time user nhap
-    ////// Neu ngay user nhap be hon ngay hien tai thi tra ve True
     public boolean kiemTraDeadLine(Date datetime)
     {
           if(datetime.before(nowtime))
